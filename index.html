@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 OP Glowing Pink Birthday 🌸</title>
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0d0a0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* ── GLOWING BACKGROUND ORB ── */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, 
+                rgba(255, 20, 147, 0.08) 0%, 
+                rgba(255, 105, 180, 0.04) 40%,
+                transparent 70%);
+            animation: pulseBg 6s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes pulseBg {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* ── MAIN CARD ── */
+        .card {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            width: 100%;
+            background: rgba(20, 10, 25, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 48px 48px 32px 32px;
+            padding: 40px 30px 30px;
+            box-shadow: 
+                0 0 40px rgba(255, 20, 147, 0.25),
+                0 0 80px rgba(255, 20, 147, 0.10),
+                inset 0 0 60px rgba(255, 105, 180, 0.05);
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 
+                0 0 60px rgba(255, 20, 147, 0.40),
+                0 0 120px rgba(255, 20, 147, 0.15),
+                inset 0 0 80px rgba(255, 105, 180, 0.08);
+        }
+
+        /* ── GLOWING TEXT UTILITY ── */
+        .glow-pink {
+            color: #ffb6d9;
+            text-shadow: 
+                0 0 10px #ff1493,
+                0 0 20px #ff1493,
+                0 0 40px #ff1493,
+                0 0 80px #ff1493;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 40px #ff1493; }
+            50% { opacity: 0.95; text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493, 0 0 60px #ff1493; }
+        }
+
+        .glow-soft {
+            color: #ffc0d5;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        /* ── TITLE ── */
+        .title {
+            font-size: clamp(2.4rem, 10vw, 4.2rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s ease-in-out infinite;
+            margin-bottom: 4px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sub-glow {
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            color: #ffaacc;
+            text-shadow: 0 0 20px #ff1493;
+            letter-spacing: 6px;
+            margin-top: -8px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* ── PINK ENERGY BAR ── */
+        .energy-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            margin: 18px 0 22px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 105, 180, 0.15);
+        }
+
+        .energy-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
+            background-size: 200% 100%;
+            border-radius: 20px;
+            animation: fillBar 2.5s ease-out forwards, shimmerBar 3s linear infinite;
+            box-shadow: 0 0 20px #ff1493;
+        }
+
+        @keyframes fillBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes shimmerBar {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* ── STATS GRID ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 24px 0 20px;
+        }
+
+        .stat-item {
+            background: rgba(255, 20, 147, 0.06);
+            border: 1px solid rgba(255, 105, 180, 0.15);
+            border-radius: 20px;
+            padding: 14px 6px;
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: #ff69b4;
+            background: rgba(255, 20, 147, 0.12);
+            transform: scale(1.02);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff88aa;
+            opacity: 0.7;
+        }
+
+        .stat-value {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 800;
+            color: #ffb6d9;
+            text-shadow: 0 0 20px #ff1493;
+            margin-top: 2px;
+        }
+
+        /* ── QUOTE ── */
+        .quote-box {
+            margin: 20px 0 16px;
+            padding: 18px 12px;
+            border-top: 1px solid rgba(255, 105, 180, 0.15);
+            border-bottom: 1px solid rgba(255, 105, 180, 0.15);
+        }
+
+        .quote-text {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #ffd1e0;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .quote-text span {
+            color: #ff69b4;
+            text-shadow: 0 0 30px #ff1493;
+        }
+
+        /* ── ANIME GLITCH DIVIDER ── */
+        .glitch-divider {
+            font-size: 1.6rem;
+            letter-spacing: 12px;
+            color: #ff1493;
+            opacity: 0.4;
+            margin: 6px 0 12px;
+            animation: glitchPulse 2s infinite alternate;
+        }
+
+        @keyframes glitchPulse {
+            0% { opacity: 0.3; letter-spacing: 12px; }
+            100% { opacity: 0.7; letter-spacing: 18px; }
+        }
+
+        /* ── APOLOGY SECTION ── */
+        .apology-box {
+            margin-top: 28px;
+            padding: 22px 18px 18px;
+            background: rgba(255, 20, 147, 0.04);
+            border-radius: 28px;
+            border: 1px dashed rgba(255, 105, 180, 0.25);
+            transition: 0.4s;
+        }
+
+        .apology-box:hover {
+            border-color: #ff69b4;
+            background: rgba(255, 20, 147, 0.07);
+        }
+
+        .apology-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #ff88aa;
+            opacity: 0.6;
+        }
+
+        .apology-text {
+            font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+            color: #ffd9e6;
+            line-height: 1.7;
+            margin: 12px 0 6px;
+        }
+
+        .apology-text strong {
+            color: #ff69b4;
+            text-shadow: 0 0 20px #ff1493;
+        }
+
+        .cute-emoji-line {
+            font-size: 2rem;
+            margin-top: 10px;
+            letter-spacing: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ── FLOATING SPARKLES (CSS only) ── */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: sparkleFloat 6s linear infinite;
+            z-index: 0;
+        }
+
+        .sparkle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { left: 85%; top: 15%; animation-delay: 1.5s; }
+        .sparkle:nth-child(3) { left: 50%; top: 80%; animation-delay: 3s; }
+        .sparkle:nth-child(4) { left: 20%; top: 70%; animation-delay: 4.5s; }
+        .sparkle:nth-child(5) { left: 75%; top: 60%; animation-delay: 2.2s; }
+        .sparkle:nth-child(6) { left: 5%; top: 45%; animation-delay: 5s; }
+        .sparkle:nth-child(7) { left: 92%; top: 40%; animation-delay: 0.8s; }
+
+        @keyframes sparkleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+            20% { opacity: 0.8; transform: translateY(-20px) scale(1.2) rotate(20deg); }
+            80% { opacity: 0.8; transform: translateY(-60px) scale(1) rotate(-10deg); }
+            100% { opacity: 0; transform: translateY(-100px) scale(0.6) rotate(30deg); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 480px) {
+            .card { padding: 28px 18px 22px; border-radius: 32px; }
+            .stats { gap: 6px; }
+            .stat-item { padding: 10px 4px; }
+            .stat-value { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── FLOATING SPARKLES ─── -->
+    <div class="sparkle">✦</div>
+    <div class="sparkle">✧</div>
+    <div class="sparkle">✦</div>
+    <div class="sparkle">✧</div>
+    <div class="sparkle">✦</div>
+    <div class="sparkle">✧</div>
+    <div class="sparkle">✦</div>
+
+    <!-- ─── MAIN CARD ─── -->
+    <div class="card">
+
+        <!-- TITLE -->
+        <div class="title">✨ Happy Birthday ✨</div>
+        <div class="sub-glow glow-pink">✦ SYSTEM OVERRIDE : BESTIE MODE ✦</div>
+
+        <!-- ENERGY BAR -->
+        <div class="energy-bar">
+            <div class="energy-fill"></div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-label">💖 Love</div>
+                <div class="stat-value">∞</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">✨ Shine</div>
+                <div class="stat-value glow-pink">OP</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">🌸 Pink Energy</div>
+                <div class="stat-value">100M%</div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="quote-box">
+            <div class="quote-text">
+                “ 你是我最喜欢的 <span>✨ 灾难 ✨</span> ”
+                <br>
+                <span style="font-size:0.75rem; opacity:0.6;">( You’re my favorite disaster — but also my treasure ♡ )</span>
+            </div>
+        </div>
+
+        <!-- GLITCH DIVIDER -->
+        <div class="glitch-divider">❖ ❖ ❖</div>
+
+        <!-- ─── APOLOGY (CUTE ALOOGY) ─── -->
+        <div class="apology-box">
+            <div class="apology-title">⚠️ REAL TALK : THE ALOOGY ⚠️</div>
+            <div class="apology-text">
+                Okay, bestie… my brain was running on <strong>1% battery</strong> this week,
+                and I completely dropped the ball. 😭<br><br>
+                I forgot your birthday — <strong>and that’s literally unforgivable</strong> in the
+                bestie code of honor.<br><br>
+                But please know: <strong>you are the main character</strong> of my life,
+                and I’m so sorry my calendar glitched.<br><br>
+                I hope this <strong>glowing pink OP mess</strong> makes you smile,
+                because you deserve <strong>all the pink stars in the universe</strong>. 🌸
+            </div>
+            <div class="cute-emoji-line">
+                🥺 💕 ✨ 🎀 🫶
+            </div>
+            <div style="margin-top:10px; font-size:0.85rem; color:#ff88aa; opacity:0.7;">
+                forgiveness level : <span style="color:#ff69b4; text-shadow:0 0 20px #ff1493;">pending… but I love you!!!</span>
+            </div>
+        </div>
+
+        <!-- FOOTER GLOW -->
+        <div style="margin-top:24px; font-size:0.7rem; letter-spacing:3px; color:#ff88aa; opacity:0.3;">
+            ✦ POWERED BY PINK ENERGY ✦
+        </div>
+
+    </div>
+
+</body>
+</html>
